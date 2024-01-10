@@ -1,60 +1,70 @@
-import Text from "./components/Text"
-import Button from "./components/Button"
-import React, { useState } from "react"
+import {
+  BrowserRouter as Router,
+  Route,
+  Routes
+} from "react-router-dom";
+import Home from "./pages/Home";
+import Detail from "./pages/Detail";
 
+// const Counter = React.memo(({increment}) => {
+//   console.log("render");
+//   return(
+//     <>
+//     <button onClick={increment}>ARTTIR</button>
+//     </>
+    
+//   )
+// })
 
 function App() {
 
-  const [name, setName] = useState(null)
-  //props
-  const [data, setData] = useState([])
-  const [count, setCount] = useState(0)
 
-  const clickFunc = () => {
-    alert("Click")
-    setName("react değişti")
-  }
+  <Router>
+    <Routes>
+      <Route path="/" element={<Home/>}/>
+      <Route path="/detail:id" element={<Detail/>}/>
+    </Routes>
+  </Router>
+  // const inputRef = useRef();
+  //  const [count,setCount]=useState(0);
+  //  const [text,setText]=useState("");
+  //  const increment = useCallback(() =>{
+  //   setCount(count+1);
+  //  }, [text])
+  // const [textChange,setTextChange]=useState(0);
 
 
-  const clickFunc2 = () => {
-    setData(prev => ([...prev, name]))
-  }
+  // const largeDataFunc = useMemo(() => {
+  //   [...new Array[10000]].forEach((item) => {})
 
-  const decrement = () => {
-    if (count <= 0) return
-    setCount(prev => prev - 1);
-  }
+  //   return count *3;
+  // },[]);
 
-  console.log(data,"data");
 
+  // const focusFunc = () => {
+
+  //   inputRef.current.focus();
+
+  // }
 
   return (
-    <>
-      <div onClick={clickFunc}>
-        {name} <br></br>
-      </div>
-      <div>
-        react eğitimi 1
-        <Text number="2" name={"REACT"}></Text>
-        react eğitimi 3
-        <Text number="4" name={"REACTTT"}></Text>
-        <Text number="5" name={"REACTTTT"}></Text>
-        <Button name={"Azalt"} onClick={decrement}></Button>
-        {/* <button onClick={decrement} >Azalt</button> */}
-        <button onClick={() => setCount(count + 1)}>Arttır</button>
-        <div>{count}</div>
-        <input type="text" onChange={(e) => setName(e.target.value)} />
-        <div>{name}</div>
-        <button onClick={clickFunc2}>Tıkla</button>
-        <div>
-          {data.map((data, i) => {
 
-            <div key={i}>{data}</div>
-        })}
-        </div>
-        <div>{data}</div>
-      </div>
+    <>
+    {/* <div>{count}</div>
+    
+    <Counter increment={increment}/>
+    <input type="text" onChange={e => setText(e.target.value)}></input> */}
+    {/* <button onClick={() => setCount(count+1)}>
+      Arttır
+    </button>
+      <input type="text" ref={inputRef}></input>
+      <button onClick={focusFunc}>
+        Focus me
+      </button> */}
+      {/* {largeDataFunc} */}
+      {/* <input type="text" onChange={e => setTextChange(e.target.value)}></input> */}
     </>
+
   )
 }
 
